@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('feedbacks', function (Blueprint $table) {
+            $table->id();
+            $table->string('name'); // Ф.И.О.
+            $table->string('address'); // Адрес проживания
+            $table->string('phone'); // Контактный телефон
+            $table->string('email'); // Email для уведомлений
+            $table->string('type')->default('заявление'); // Вид обращения
+            $table->text('message'); // Текст обращения
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('feedback');
+    }
+};
